@@ -1,60 +1,56 @@
 # AI Research Intelligence Agent
 
-A Python and FastAPI project for structured research planning, designed to evolve into an evidence-grounded AI research assistant.
+A Python and FastAPI research tool that retrieves web search results and creates structured Markdown research briefs with source links.
 
-## Current Features
+## Features
 
-- FastAPI application and interactive API documentation.
-- Health-check endpoint.
-- Research-plan generation from a topic and optional questions.
-- Input validation with Pydantic.
+- Web search through DuckDuckGo.
+- Source titles, URLs and search snippets.
+- Structured Markdown research briefs.
+- FastAPI interactive documentation.
+- Input validation and automated API tests.
 
 ## Requirements
-
 Python 3.11 or newer.
 
-## Setup
-
-```bash
-python -m venv .venv
-```
-
-On Windows:
+## Setup - Windows
 
 ```cmd
+python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
 python -m uvicorn app.main:app --reload
 ```
 
-Open http://127.0.0.1:8000/docs to explore the API.
+Open http://127.0.0.1:8000/docs
 
-## Example Request
+## API
+
+`POST /research`
+
+Example request:
 
 ```json
 {
   "topic": "AI agents in scientific research",
-  "research_questions": [
-    "What are the main applications?",
-    "What are the limitations?"
-  ]
+  "max_sources": 5
 }
 ```
 
-Send the example to POST /research/plan using the interactive API documentation.
+## Tests
+
+```cmd
+pytest -q
+```
+
+## Limitations
+Search snippets are not independently verified. This version does not use an LLM to synthesise or fact-check claims. Search availability depends on the external provider and network.
 
 ## Roadmap
+- [ ] LLM-based evidence synthesis
+- [ ] Citation verification
+- [ ] Search-quality evaluation
+- [ ] Docker deployment
 
-- [ ] Web search integration.
-- [ ] Source extraction and reference tracking.
-- [ ] LLM-powered evidence synthesis.
-- [ ] Automated tests and research-quality evaluation.
-- [ ] Docker support.
-
-## Current Limitations
-
-This initial version generates research plans only. It does not yet search the web, verify citations, or generate evidence-based research reports.
-
-## License
-
-No license has been specified yet. Add a LICENSE file before defining reuse permissions.
+## Author
+Mohammed Asim - https://github.com/Whoisasimm
